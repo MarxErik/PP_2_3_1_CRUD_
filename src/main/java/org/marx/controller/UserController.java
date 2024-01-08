@@ -1,22 +1,23 @@
 package org.marx.controller;
+import org.marx.service.UserService;
+import org.marx.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.marx.service.UserService;
 
 @Controller
-@RequestMapping(value = "/users")
+//@RequestMapping(value = "/users")
 public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public UserController(UserServiceImpl userServiceImpl) {
+        this.userService = userServiceImpl;
     }
 
     @GetMapping(value = "/users")
     public String readAllUsers(Model model) {
-        model.addAttribute("users", userService.readAllUsers());
+        model.addAttribute("user", userService.readAllUsers());
         return "users";
     }
 }

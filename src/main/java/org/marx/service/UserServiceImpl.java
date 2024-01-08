@@ -1,6 +1,7 @@
 package org.marx.service;
 
 import org.marx.dao.UserDao;
+import org.marx.dao.UserDaoImpl;
 import org.marx.model.User;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;

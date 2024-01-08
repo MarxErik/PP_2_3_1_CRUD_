@@ -18,13 +18,28 @@
     <tbody>
     <!-- Здесь будут данные о пользователях -->
     <!-- Пример использования Thymeleaf для отображения данных -->
-    <tr th:each="user : ${users}">
-        <td th:text="${user.id}"></td>
-        <td th:text="${user.name}"></td>
-        <td th:text="${user.email}"></td>
+    <tr th:each="user : ${user}">
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getName()}"></td>
         <!-- Добавьте другие поля, если необходимо -->
     </tr>
     </tbody>
 </table>
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Car</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div>-->
+<!--    <th:block th:each="msg : ${users}">-->
+<!--        <h1 th:text="${msg}"></h1>-->
+<!--    </th:block>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

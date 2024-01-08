@@ -1,6 +1,6 @@
 package org.marx.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "User_Table")
@@ -19,6 +19,13 @@ public class User {
 
     public User() {
 
+    }
+
+    public User(long id, String name, int age, String professionalPosition) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.professionalPosition = professionalPosition;
     }
 
     public Long getId() {

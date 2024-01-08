@@ -1,8 +1,8 @@
 package org.marx.dao;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import org.marx.model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,8 +27,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> readAllUsers() {
-        TypedQuery<User> query = env.createQuery("from User", User.class);
-        return query.getResultList();
+        return env.createQuery("SELECT user FROM User user", User.class).getResultList();
     }
 
     @Override

@@ -22,12 +22,13 @@ import java.util.Properties;
 @PropertySource(value = "classpath:.properties")
 @ComponentScan(value = "org.marx")
 public class DBAppConfig {
-    private final Environment env;
-
     @Autowired
-    DBAppConfig(Environment env) {
-        this.env = env;
-    }
+    private Environment env;
+
+
+//    DBAppConfig(Environment env) {
+//        this.env = env;
+//    }
 
     @Bean
     public DataSource getDataSource() {
@@ -44,6 +45,7 @@ public class DBAppConfig {
         properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+
 
         return properties;
     }
@@ -69,7 +71,7 @@ public class DBAppConfig {
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdaptor());
         entityManagerFactoryBean.setDataSource(getDataSource());
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        entityManagerFactoryBean.setPackagesToScan("web.model");
+        entityManagerFactoryBean.setPackagesToScan("org.marx.model");
         entityManagerFactoryBean.setJpaProperties(jpaHibernateProperties());
         return entityManagerFactoryBean;
     }
