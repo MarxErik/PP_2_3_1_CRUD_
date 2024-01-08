@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+</head>
+<body>
+<h1>User List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <!-- Добавьте другие поля, если необходимо -->
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Здесь будут данные о пользователях -->
+    <!-- Пример использования Thymeleaf для отображения данных -->
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <!-- Добавьте другие поля, если необходимо -->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
