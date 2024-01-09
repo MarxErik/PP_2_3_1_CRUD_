@@ -1,4 +1,5 @@
 package org.marx.controller;
+import org.marx.model.User;
 import org.marx.service.UserService;
 import org.marx.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,11 @@ public class UserController {
 
     public UserController(UserServiceImpl userServiceImpl) {
         this.userService = userServiceImpl;
+    }
+    @GetMapping("/users")
+    public String createUser(Model model) {
+        model.addAttribute("user", userService.createUser((User) model));
+        return "users";
     }
 
     @GetMapping(value = "/users")
