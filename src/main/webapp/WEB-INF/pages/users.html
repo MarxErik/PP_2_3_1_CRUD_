@@ -1,45 +1,134 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>User List</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>User List</h1>-->
+<!--<table>-->
+<!--    <tr>-->
+<!--        <th>ID</th>-->
+<!--        <th>Name</th>-->
+<!--        <th>Age</th>-->
+<!--        <th>Professional Position</th>-->
+<!--        <th>Edit</th>-->
+<!--        <th>Delete</th>-->
+<!--    </tr>-->
+<!--    &lt;!&ndash; Loop through users and display them in table rows &ndash;&gt;-->
+<!--    <tr th:each="user : ${user}">-->
+<!--        <td th:text="${user.id}"></td>-->
+<!--        <td th:text="${user.name}"></td>-->
+<!--        <td th:text="${user.age}"></td>-->
+<!--        <td th:text="${user.professionalPosition}"></td>-->
+<!--        <td><a th:href="@{'/edit?id=' + ${user.id}}">Edit</a></td>-->
+<!--        <td><a th:href="@{'/delete?id=' + ${user.id}}">Delete</a></td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--&lt;!&ndash; Flash message if any &ndash;&gt;-->
+<!--<div th:if="${flashMessage}" th:text="${flashMessage}"></div>-->
+<!--<a href="/create">Add User</a>-->
+<!--<a href="/users">Refresh the entire list of users</a>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>User List</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        div {
+            margin: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-<h1>User List</h1>
+<h1>Stylish user sheet</h1>
+
+<iframe frameborder="0" style="border:none;width:20%;height:450px;" width="20%" height="450" src="https://music.yandex.ru/iframe/playlist/marx2021/3">Слушайте <a href='https://music.yandex.ru/users/marx2021/playlists/3'>Мне нравится</a> — <a href='https://music.yandex.ru/users/marx2021'>Маркс</a> на Яндекс Музыке</iframe>
+
 <table>
-    <thead>
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Email</th>
-        <!-- Добавьте другие поля, если необходимо -->
+        <th>Age</th>
+        <th>Professional Position</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
-    </thead>
-    <tbody>
-    <!-- Здесь будут данные о пользователях -->
-    <!-- Пример использования Thymeleaf для отображения данных -->
+
     <tr th:each="user : ${user}">
-        <td th:text="${user.getId()}"></td>
-        <td th:text="${user.getName()}"></td>
-        <!-- Добавьте другие поля, если необходимо -->
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.professionalPosition}"></td>
+        <td><a th:href="@{'/edit?id=' + ${user.id}}">Edit</a></td>
+        <td><a th:href="@{'/delete?id=' + ${user.id}}">Delete</a></td>
     </tr>
-    </tbody>
 </table>
+
+<div th:if="${flashMessage}" th:text="${flashMessage}"></div>
+<a href="/create">Add User</a>
+<a href="/users">Refresh the entire list of users</a>
 </body>
 </html>
-
-<!--<!DOCTYPE html>-->
-<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Car</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div>-->
-<!--    <th:block th:each="msg : ${users}">-->
-<!--        <h1 th:text="${msg}"></h1>-->
-<!--    </th:block>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->

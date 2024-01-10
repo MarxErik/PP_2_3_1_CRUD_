@@ -2,12 +2,13 @@ package org.marx.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+
 import org.marx.model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -16,13 +17,13 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     @Transactional
-    public User createUser(User user) {
-        return env.merge(user);
+    public void createUser(User user) {
+        env.persist(user);
     }
 
     @Override
-    public User readUser(Integer userId) {
-        return env.find(User.class, userId);
+    public Optional<User> readUser(long userId) {
+        return Optional.ofNullable(env.find(User.class, userId));
     }
 
     @Override
@@ -36,12 +37,11 @@ public class UserDaoImpl implements UserDao {
         return env.merge(user);
     }
 
-
     @Override
     @Transactional
-    public User deleteUser(Integer userId) {
-        User user = readUser(userId);
-        env.remove(user);
+    public Optional<User> deleteUser(long userId) {
+        Optional<User> user = readUser(userId);
+        env.remove(user.get());
         return user;
     }
 }

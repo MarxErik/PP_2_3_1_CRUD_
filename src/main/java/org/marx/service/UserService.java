@@ -3,19 +3,16 @@ package org.marx.service;
 import org.marx.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
-    User createUser(User user);
+    void createUser(User user);
 
-    User readUser(Integer userId);
+    Optional<User> readUser(long userId);
 
     List<User> readAllUsers();
 
-    User updateUser(User user);
+    void updateUser(User user);
 
-
-    User deleteUser(Integer userId);
-
-
+    Optional<User> deleteUser(long userId);
 }
-

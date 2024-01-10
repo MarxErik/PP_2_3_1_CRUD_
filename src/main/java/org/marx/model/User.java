@@ -6,16 +6,14 @@ import javax.persistence.*;
 @Table(name = "User_Table")
 public class User {
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-
-    @Column
-    String name;
-    @Column
-    int age;
+    private long id;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "age")
+    private int age;
     @Column(name = "professional_position")
-    String professionalPosition;
+    private String professionalPosition;
 
     public User() {
 
@@ -42,5 +40,31 @@ public class User {
 
     public String getProfessionalPosition() {
         return professionalPosition;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setProfessionalPosition(String professionalPosition) {
+        this.professionalPosition = professionalPosition;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", professionalPosition='" + professionalPosition + '\'' +
+                '}';
     }
 }

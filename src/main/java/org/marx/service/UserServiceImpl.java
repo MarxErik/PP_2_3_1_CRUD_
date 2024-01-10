@@ -1,12 +1,12 @@
 package org.marx.service;
 
 import org.marx.dao.UserDao;
-import org.marx.dao.UserDaoImpl;
 import org.marx.model.User;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -14,12 +14,12 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao;
 
     @Override
-    public User createUser(User user) {
-        return userDao.createUser(user);
+    public void createUser(User user) {
+        userDao.createUser(user);
     }
 
     @Override
-    public User readUser(Integer userId) {
+    public Optional<User> readUser(long userId) {
         return userDao.readUser(userId);
     }
 
@@ -34,19 +34,17 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User deleteUser(Integer userId) {
+    public Optional<User> deleteUser(long userId) {
         try {
             return userDao.deleteUser(userId);
         } catch (InvalidDataAccessApiUsageException e) {
             System.out.println("Not found User");
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override
-    public User updateUser(User user) {
-        return userDao.updateUser(user);
+    public void updateUser(User user) {
+        userDao.updateUser(user);
     }
-
-
 }

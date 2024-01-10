@@ -22,13 +22,13 @@ import java.util.Properties;
 @PropertySource(value = "classpath:.properties")
 @ComponentScan(value = "org.marx")
 public class DBAppConfig {
+
+    private final Environment env;
+
     @Autowired
-    private Environment env;
-
-
-//    DBAppConfig(Environment env) {
-//        this.env = env;
-//    }
+    DBAppConfig(Environment env) {
+        this.env = env;
+    }
 
     @Bean
     public DataSource getDataSource() {
