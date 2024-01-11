@@ -122,7 +122,7 @@
         <td th:text="${user.name}"></td>
         <td th:text="${user.age}"></td>
         <td th:text="${user.professionalPosition}"></td>
-        <td><a th:href="@{'/edit?id=' + ${user.id}}">Edit</a></td>
+        <td><a th:href="@{'/update?id=' + ${user.id}}">Edit</a></td>
         <td><a th:href="@{'/delete?id=' + ${user.id}}">Delete</a></td>
     </tr>
 </table>

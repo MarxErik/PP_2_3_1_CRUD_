@@ -26,32 +26,35 @@ public class UserController {
     }
 
     @GetMapping("/create")
-    public String addUser(@ModelAttribute("user") User user) {
+    public String introduceUserUser(@ModelAttribute("user") User user) {
         return "create";
     }
 
     @PostMapping("/create")
     public String saveUser(@ModelAttribute("user") User user, RedirectAttributes attributes) {
-        if (user.getId() == null) {
-            userService.createUser(user);
-        } else {
-            userService.updateUser(user);
-        }
+        userService.createUser(user);
         attributes.addFlashAttribute("flashMessage", "User " + user.getName() +
                 " created!");
         return "redirect:/users";
     }
 
-    @GetMapping(value = "/edit", params = "id")
-    public String editUserForm(@RequestParam("id") int id,
-                               RedirectAttributes attributes, Model model) {
+
+    @GetMapping(value = "/update", params = "id")
+    public String updateUserForm(@RequestParam("id") int id,
+                                 RedirectAttributes attributes, Model model) {
         try {
             model.addAttribute("user", userService.getUser(id));
         } catch (NumberFormatException | NullPointerException e) {
             attributes.addFlashAttribute("flashMessage", "User not found");
             return "redirect:/users";
         }
-        return "create";
+        return "/update";
+    }
+
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("user") User user) {
+        userService.updateUser(user);
+        return "redirect:users";
     }
 
     @GetMapping("/delete")
