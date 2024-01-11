@@ -22,12 +22,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Optional<User> readUser(long userId) {
+    public Optional<User> getUser(long userId) {
         return Optional.ofNullable(env.find(User.class, userId));
     }
 
     @Override
-    public List<User> readAllUsers() {
+    public List<User> getAllUsers() {
         return env.createQuery("SELECT user FROM User user", User.class).getResultList();
     }
 
@@ -40,7 +40,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     @Transactional
     public Optional<User> deleteUser(long userId) {
-        Optional<User> user = readUser(userId);
+        Optional<User> user = getUser(userId);
         env.remove(user.get());
         return user;
     }

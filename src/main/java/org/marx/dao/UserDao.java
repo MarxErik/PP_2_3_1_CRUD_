@@ -9,9 +9,9 @@ public interface UserDao {
     //CRRUD
     void createUser(User user);
 
-    Optional<User> readUser(long userId);
+    Optional<User> getUser(long userId);
 
-    List<User> readAllUsers();
+    List<User> getAllUsers();
 
     Optional<User> deleteUser(long userId);
 

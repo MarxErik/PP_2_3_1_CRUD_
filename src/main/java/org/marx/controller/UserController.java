@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Optional;
 
@@ -21,8 +20,8 @@ public class UserController {
     }
 
     @GetMapping({"/users", ""})
-    public String readAllUsers(Model model) {
-        model.addAttribute("user", userService.readAllUsers());
+    public String getAllUsers(Model model) {
+        model.addAttribute("user", userService.getAllUsers());
         return "users";
     }
 
@@ -47,7 +46,7 @@ public class UserController {
     public String editUserForm(@RequestParam("id") int id,
                                RedirectAttributes attributes, Model model) {
         try {
-            model.addAttribute("user", userService.readUser(id));
+            model.addAttribute("user", userService.getUser(id));
         } catch (NumberFormatException | NullPointerException e) {
             attributes.addFlashAttribute("flashMessage", "User not found");
             return "redirect:/users";

@@ -19,13 +19,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> readUser(long userId) {
-        return userDao.readUser(userId);
+    public Optional<User> getUser(long userId) {
+        return userDao.getUser(userId);
     }
 
     @Override
-    public List<User> readAllUsers() {
-        return userDao.readAllUsers();
+    public List<User> getAllUsers() {
+        return userDao.getAllUsers();
     }
 
     public UserServiceImpl(UserDao userDao) {
