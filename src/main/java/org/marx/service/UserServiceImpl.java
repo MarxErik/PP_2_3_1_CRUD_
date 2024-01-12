@@ -6,12 +6,22 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
+    private static final Logger logger = Logger.getLogger(UserServiceImpl.class.getName());
+
+    static {
+        String path = Objects.requireNonNull(UserServiceImpl.class.getClassLoader()
+                .getResource("logging.properties")).getFile();
+        System.setProperty("java.util.logging.config.file", path);
+    }
+
 
     @Override
     public void createUser(User user) {
@@ -38,7 +48,7 @@ public class UserServiceImpl implements UserService {
         try {
             return userDao.deleteUser(userId);
         } catch (InvalidDataAccessApiUsageException e) {
-            System.out.println("Not found User");
+            logger.info("Not found User");
         }
         return Optional.empty();
     }

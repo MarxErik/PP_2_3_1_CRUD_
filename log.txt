@@ -1,0 +1,9 @@
+[пт янв. 12 21:07:21 OMST 2024] INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+[пт янв. 12 21:07:21 OMST 2024] INFO: 1 Spring WebApplicationInitializers detected on classpath 
+[пт янв. 12 21:07:21 OMST 2024] INFO: Initializing Spring DispatcherServlet 'dispatcher' 
+[пт янв. 12 21:07:22 OMST 2024] INFO: HHH000204: Processing PersistenceUnitInfo [name: default] 
+[пт янв. 12 21:07:22 OMST 2024] INFO: HHH000412: Hibernate ORM core version 5.6.15.Final 
+[пт янв. 12 21:07:22 OMST 2024] INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+[пт янв. 12 21:07:23 OMST 2024] INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+[пт янв. 12 21:07:46 OMST 2024] INFO: TEST 
+[пт янв. 12 21:07:51 OMST 2024] INFO: Destroying Spring FrameworkServlet 'dispatcher' 
