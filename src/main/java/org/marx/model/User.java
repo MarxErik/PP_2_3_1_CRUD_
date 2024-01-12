@@ -1,6 +1,7 @@
 package org.marx.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "User_Table")
@@ -30,32 +31,46 @@ public class User {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getProfessionalPosition() {
-        return professionalPosition;
-    }
-
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public int getAge() {
+        return age;
+    }
+
     public void setAge(int age) {
         this.age = age;
     }
 
+    public String getProfessionalPosition() {
+        return professionalPosition;
+    }
+
+
     public void setProfessionalPosition(String professionalPosition) {
         this.professionalPosition = professionalPosition;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && age == user.age && Objects.equals(name, user.name) && Objects.equals(professionalPosition, user.professionalPosition);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age, professionalPosition);
     }
 
     @Override

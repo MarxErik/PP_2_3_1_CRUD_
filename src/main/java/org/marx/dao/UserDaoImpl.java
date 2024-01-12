@@ -33,15 +33,14 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     @Transactional
-    public User updateUser(User user) {
-        return env.merge(user);
+    public void updateUser(User user) {
+        env.merge(user);
     }
 
     @Override
     @Transactional
-    public Optional<User> deleteUser(long userId) {
+    public void deleteUser(long userId) {
         Optional<User> user = getUser(userId);
         env.remove(user.get());
-        return user;
     }
 }

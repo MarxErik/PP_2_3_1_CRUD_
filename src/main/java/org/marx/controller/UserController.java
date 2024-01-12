@@ -58,11 +58,10 @@ public class UserController {
     }
 
     @GetMapping("/delete")
-    public String deleteUser(@RequestParam(value = "id", defaultValue = "") String id,
+    public String deleteUser(@RequestParam(value = "id", defaultValue = "") long id,
                              RedirectAttributes attributes) {
-        Optional<User> user = userService.deleteUser(Integer.parseUnsignedInt(id));
+        userService.deleteUser(id);
         attributes.addFlashAttribute("flashMessage", "User " +
-                user.get().getName() + " " +
                 " deleted!");
         return "redirect:/users";
     }

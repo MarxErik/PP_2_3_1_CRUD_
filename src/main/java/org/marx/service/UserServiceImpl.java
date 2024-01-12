@@ -44,13 +44,12 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Optional<User> deleteUser(long userId) {
+    public void deleteUser(long userId) {
         try {
-            return userDao.deleteUser(userId);
+            userDao.deleteUser(userId);
         } catch (InvalidDataAccessApiUsageException e) {
             logger.info("Not found User");
         }
-        return Optional.empty();
     }
 
     @Override
